@@ -1,0 +1,12 @@
+<mat-card *ngIf="user">
+    <mat-card-content>
+        <p><strong>Name :</strong> {{ user.name }}</p>
+        <p><strong>Email :</strong> {{ user.email }}</p>
+        <p><strong>Phone :</strong> {{ user.phone }}</p>
+        <p><strong>Address :</strong> {{ user.address }}</p>
+        <p><strong>Role :</strong> {{ user.role }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button class="color" mat-button color="warn" [routerLink]="['/users']">Back</button>
+    </mat-card-actions>
+</mat-card>

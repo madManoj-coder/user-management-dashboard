@@ -1,0 +1,41 @@
+.dark-theme {
+    background-color: #121212;
+    color: white;
+  
+    .mat-toolbar {
+      background-color: #1e1e1e;
+      color: black;
+    }
+  
+    .mat-card {
+      background-color: #2a2a2a;
+      color: white;
+    }
+  
+    .mat-button {
+      color: white;
+    }
+  }
+
+  .mat-toolbar-single-row{
+    justify-content: space-between;
+  }
+
+  .mat-icon {
+    cursor: pointer;
+  }
+  
+
+.container-fluid {
+    // padding: 10px;
+    margin: 0 30px;
+  }
+  
+  @media (max-width: 768px) {
+    .container-fluid {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  
+  

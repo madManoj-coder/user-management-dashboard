@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "name": "Manoja",
+      "email": "manoj@example.com",
+      "phone": "9834431452",
+      "address": "Thodga road",
+      "role": "User",
+      "id": "3ty4"
+    },
+    {
+      "name": "Jhon",
+      "email": "john@example.com",
+      "phone": "9304645174",
+      "address": "abhyas nagar",
+      "role": "User",
+      "id": "6dy4"
+    },
+    {
+      "name": "sangita",
+      "email": "sangita@gmail.com",
+      "phone": "8934431845",
+      "address": "ahmed",
+      "role": "Admin",
+      "id": "0e5c"
+    },
+    {
+      "id": "c5ce",
+      "name": "akash",
+      "email": "akash@gmail.com",
+      "phone": "9837431845",
+      "address": "rtukd",
+      "role": "Admin"
+    },
+    {
+      "id": "27dc",
+      "name": "kailas",
+      "email": "kailas@gmail.com",
+      "phone": "3672546103",
+      "address": "akash nagar",
+      "role": "User"
+    },
+    {
+      "id": "011d",
+      "name": "kalyani",
+      "email": "kalyani@gmail.com",
+      "phone": "9472635472",
+      "address": "lecture colony",
+      "role": "User"
+    }
+  ]
+}

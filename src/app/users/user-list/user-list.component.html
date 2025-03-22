@@ -1,0 +1,72 @@
+<mat-card class="table-container">
+  <div class="table-header">
+    <mat-form-field class="search-field">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search users" />
+    </mat-form-field>
+
+    <div class="col-md-6 text-md-end text-center">
+      <button mat-raised-button color="primary" [routerLink]="['/users/add']">
+        <mat-icon>person_add</mat-icon> Add New User
+      </button>
+    </div>
+  </div>
+
+  <div class="mat-elevation-z8 responsive-table">
+    <table mat-table [dataSource]="users" matSort class="full-width-table">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Sr No. </th>
+        <td mat-cell *matCellDef="let user; let i = index"> {{ i + 1 }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let user"> {{ user.email }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+        <td mat-cell *matCellDef="let user"> {{ user.role }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let user">
+          <button mat-icon-button color="primary" [routerLink]="['/users/details', user.id]">
+            <mat-icon class="color">visibility</mat-icon>
+          </button>
+
+          <button class="color" mat-icon-button color="primary" [routerLink]="['/users/edit', user.id]">
+            <mat-icon class="color">edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" (click)="deleteUser(user.id)">
+            <mat-icon class="color">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <ng-container *ngIf="users.filteredData.length === 0; else dataFound">
+      <ng-template #noData>
+        <div class="no-data-message">
+          <p>No data found. Try searching for something else!</p>
+        </div>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="noData"></ng-container>
+    </ng-container>
+  
+    <ng-template #dataFound></ng-template>
+    
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+</mat-card>

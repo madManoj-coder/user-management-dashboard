@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+}
+
+.form-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .col-md-8 {
+      width: 100%; 
+  }
+}
+
+
+
+
