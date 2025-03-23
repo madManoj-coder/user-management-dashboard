@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private userService: UsersService, private dialog: MatDialog) {}
+  constructor(private userService: UsersService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.fetchUsers();
@@ -61,12 +61,12 @@ export class UserListComponent implements OnInit {
   openEditDialog(user?: User): void {
     const dialogRef = this.dialog.open(UserDialogComponent, {
       width: '400px',
-      data: { user } // Pass user data if editing
+      data: { user }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.fetchUsers(); // Refresh list after edit
+        this.fetchUsers();
       }
     });
   }
@@ -78,7 +78,7 @@ export class UserListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.fetchUsers(); // Refresh user list after adding a new user
+        this.fetchUsers();
       }
     });
   }

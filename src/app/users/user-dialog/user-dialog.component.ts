@@ -23,7 +23,6 @@ export class UserDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Initialize Form
     this.userForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -32,14 +31,12 @@ export class UserDialogComponent implements OnInit {
       address: ['', Validators.required]
     });
 
-    // **If Editing, Patch Data**
     if (this.data?.user) {
       this.isEditMode = true;
       this.userForm.patchValue(this.data.user);
     }
   }
 
-  /** ✅ Submit Form */
   onSubmit(): void {
     if (this.userForm.valid) {
       const userData: User = this.userForm.value;
@@ -47,7 +44,7 @@ export class UserDialogComponent implements OnInit {
       if (this.isEditMode) {
         this.userService.updateUser(this.data.user!.id!, userData).subscribe(() => {
           Swal.fire('User Updated!', 'User details have been updated.', 'success');
-          this.dialogRef.close(true); // Close Dialog with Success Flag
+          this.dialogRef.close(true); 
         });
       } else {
         this.userService.createUser(userData).subscribe(() => {
@@ -58,7 +55,6 @@ export class UserDialogComponent implements OnInit {
     }
   }
 
-  /** Close Dialog */
   onCancel(): void {
     this.dialogRef.close();
   }
