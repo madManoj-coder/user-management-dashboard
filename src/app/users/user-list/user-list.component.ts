@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/models/user.inteface';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
+import { UserDialogComponent } from '../user-dialog/user-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-list',
@@ -18,7 +20,7 @@ export class UserListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.fetchUsers();
@@ -52,6 +54,31 @@ export class UserListComponent implements OnInit {
           Swal.fire('Deleted!', 'User has been deleted.', 'success');
           this.fetchUsers();
         });
+      }
+    });
+  }
+
+  openEditDialog(user?: User): void {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
+      width: '400px',
+      data: { user } // Pass user data if editing
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.fetchUsers(); // Refresh list after edit
+      }
+    });
+  }
+
+  openAddUserDialog(): void {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.fetchUsers(); // Refresh user list after adding a new user
       }
     });
   }

@@ -6,7 +6,7 @@
     </mat-form-field>
 
     <div class="col-md-6 text-md-end text-center">
-      <button mat-raised-button color="primary" [routerLink]="['/users/add']">
+      <button mat-raised-button color="primary" (click)="openAddUserDialog()">
         <mat-icon>person_add</mat-icon> Add New User
       </button>
     </div>
@@ -41,7 +41,7 @@
             <mat-icon class="color">visibility</mat-icon>
           </button>
 
-          <button class="color" mat-icon-button color="primary" [routerLink]="['/users/edit', user.id]">
+          <button class="color" mat-icon-button (click)="openEditDialog(user)" color="primary" [routerLink]="['/users/edit', user.id]">
             <mat-icon class="color">edit</mat-icon>
           </button>
 
